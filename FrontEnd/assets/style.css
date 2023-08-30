@@ -84,10 +84,15 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
+
+/* MENU */
+
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
+	gap:40px;
 
 }
 nav li {
@@ -95,9 +100,20 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
+li a:hover {
 	color: #B1663C;
 }
+
+li a{
+	text-decoration: none;
+	color: black;
+}
+
+li a img{
+	height: 22px;
+}
+
+/* MAIN */
 #introduction {
 	display: flex;
 	align-items: center;
