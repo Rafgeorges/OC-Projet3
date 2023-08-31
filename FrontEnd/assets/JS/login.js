@@ -46,3 +46,37 @@ liLogin.appendChild(lienLogin)
 ul.appendChild(liInsta)
 liInsta.appendChild(lienInsta)
 lienInsta.appendChild(ImgInsta)
+
+
+//LOGIN /////////////////////////////////////////
+const baliseEmail = document.querySelector("#email")
+const balisePassword = document.querySelector('#userPassword')
+
+//LOGIN - Fonction pour se connecter
+async function loginFunction(email, password){
+    const requetePost = await fetch(urlApiLogin, {
+        method: 'POST',
+        headers: {
+            'Content-Type': "application/json",
+             Accept: "application/json",
+        },
+        body : JSON.stringify({email, password}),
+    })
+    const retourPost = requetePost.json
+    if(!requetePost.ok){
+       console.error('user not found')
+    }else{
+        console.log(retourPost)
+    }
+}
+
+//LOGIN - Bouton submit
+const loginForm = document.querySelector('#form')
+const email = baliseEmail.value
+const password = balisePassword.value
+
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    loginFunction(email, password)
+      })
