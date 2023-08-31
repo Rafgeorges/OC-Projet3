@@ -1,3 +1,7 @@
+const urlApiLogin = "http://localhost:5678/api/users/login"
+
+
+
 //MENU //////////////////////////////////////////
 const header = document.querySelector('header')
 const nav = document.createElement("nav")
