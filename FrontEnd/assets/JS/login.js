@@ -70,9 +70,11 @@ async function loginFunction(email, password){
         alert('password incorrect')}
             else{console.log('login effectué')
                  const token = retourPost.token
-                 console.log('Token récupéré :',token)}
+                 console.log('Token récupéré :',token)
                  localStorage.setItem('Token',retourPost.token)
                  console.log('Token stored in local storage')
+                }
+                 
 }
     
     
