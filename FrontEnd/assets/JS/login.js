@@ -62,18 +62,21 @@ async function loginFunction(email, password){
         },
         body : JSON.stringify({email, password}),
     })
-    const retourPost = requetePost.json
-    if(!requetePost.ok){
-       console.error('user not found')
-    }else{
-        console.log(retourPost)
+    const retourPost = await requetePost.json
+    console.log(requetePost.status)
+    if(requetePost.status === 404){
+        alert('user not found')
     }
+    
+    
 }
 
 //LOGIN - Bouton submit
 const loginForm = document.querySelector('#form')
-const email = baliseEmail.value
-const password = balisePassword.value
+// const email = baliseEmail.value
+// const password = balisePassword.value
+const email = 'ssophie.bluel@test.tld'
+const password = 'S0pdhie'
 
 loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
