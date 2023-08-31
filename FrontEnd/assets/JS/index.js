@@ -1,6 +1,3 @@
-
-
-
 //MENU //////////////////////////////////////////
 const header = document.querySelector('header')
 const nav = document.createElement("nav")
@@ -10,7 +7,7 @@ const ul = document.createElement("ul")
 const liProjets = document.createElement("li")
 const lienProjet = document.createElement("a")
 lienProjet.innerText= "projets"
-lienProjet.href = ""
+lienProjet.href = "http://127.0.0.1:5500/FrontEnd/index.html"
 
 //MENU - contact
 const liContact = document.createElement("li")

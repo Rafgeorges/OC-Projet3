@@ -73,6 +73,7 @@ async function loginFunction(email, password){
                  console.log('Token récupéré :',token)
                  localStorage.setItem('Token',retourPost.token)
                  console.log('Token stored in local storage')
+                 window.location.href = 'http://127.0.0.1:5500/FrontEnd/indexLoggedin.html' // Redirection
                 }
                  
 }
