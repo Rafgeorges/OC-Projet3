@@ -138,6 +138,26 @@ li a img{
 	margin-bottom: 0.5em;
 }
 
+/* MODALE */
+.folio-titre-container{
+	outline: 1px solid cyan;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	margin-bottom: 3em;
+	
+}
+
+#mes-projets-titre{
+	outline: 1px solid slateblue;
+	position: absolute;}
+
+.js-modal{
+	outline: 1px solid blue;
+	margin-left: 400px;
+	height: 45px;
+	width: 75px;
+}
 /* FILTRES */
 .filtres-container{
 	margin: auto;

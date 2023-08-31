@@ -45,6 +45,40 @@ lienInsta.appendChild(ImgInsta)
 //STORAGE - TEMP
 console.log(localStorage)
 
+//PORTFOLIO  /////////////////////////////////////////////////////////////////
+const portfolio = document.querySelector('#portfolio')
+
+//PORTFOLIO - Creation des éléments, du titre MES projets et du bouton ouverture
+const folioTitreContainer = document.createElement('div')
+folioTitreContainer.classList.add('folio-titre-container')
+//PORTFOLIO - Titre MES PROJETS 
+const mesProjetsTitre = document.createElement('h2')
+mesProjetsTitre.setAttribute('id','mes-projets-titre')
+mesProjetsTitre.innerText='Mes Projets'
+
+//PORTFOLIO - Bouton ouverte modale
+const lienModale = document.createElement('a')
+lienModale.href="#Modale"
+lienModale.classList.add('js-modal')
+const iconLienModale = document.createElement('i')
+iconLienModale.classList.add('fa-regular','fa-pen-to-square', 'modifier-icon')
+
+//PORTFOLIO - Parenting
+portfolio.appendChild(folioTitreContainer)
+folioTitreContainer.appendChild(mesProjetsTitre)
+folioTitreContainer.appendChild(lienModale)
+
+//MODALE ///////////////////////////////////////////////////////////////////
+//MODALE - Création des éléments - ASIDE
+const baliseModale = document.createElement('aside')
+baliseModale.setAttribute("id", "Modale")
+baliseModale.classList.add('modal')
+baliseModale.setAttribute('aria-hidden','true')
+baliseModale.setAttribute('role', 'dialog')
+baliseModale.setAttribute('aria-modal', 'false')
+baliseModale.setAttribute('style','display:none' )
+
+
 // FILTERS ////////////////////////////////////////////
 // FILTERS - Appel de l'API
 const requeteCategories = await fetch('http://localhost:5678/api/categories')
@@ -81,8 +115,31 @@ for(let i=0; i < categories.length;i++){
 }
 
 // FILTRES - parenting
-const portfolio = document.querySelector('#portfolio')
 portfolio.appendChild(divFiltres)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //GALLERY ////////////////////////////////////////////
