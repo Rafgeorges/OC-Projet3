@@ -47,6 +47,55 @@ lienInsta.appendChild(ImgInsta)
 
 
 
+// FILTERS ////////////////////////////////////////////
+// FILTERS - Appel de l'API
+const requeteCategories = await fetch('http://localhost:5678/api/categories')
+const categories = await requeteCategories.json()
+
+// FILTRES - création de la balise, et du bouton "tous"
+const divFiltres = document.createElement('div')
+divFiltres.classList.add('filtres-container')
+
+const buttonTous = document.createElement('button')
+buttonTous.setAttribute('id','filtres-btn-tous')
+buttonTous.innerText='Tous'
+divFiltres.appendChild(buttonTous)
+
+buttonTous.addEventListener("click", function(){ //Ajout event listener bouton TOUS
+    document.querySelector(".gallery").innerHTML = '';
+    genererTravaux(travaux)
+    })
+    
+// FILTRES - boucle de création des boutons pour chaque catégories après le "tous"
+for(let i=0; i < categories.length;i++){
+    const button = document.createElement('button')
+    button.setAttribute('id',categories[i].name)
+    button.innerText= categories[i].name
+
+    button.addEventListener("click", function(){ //Ajout d'un event listener
+        const travauxFiltres = travaux.filter(function(travaux){
+        return travaux.categoryId === categories[i].id
+        })
+    document.querySelector(".gallery").innerHTML = ''; //Reset du html
+    genererTravaux(travauxFiltres)
+    })
+
+    divFiltres.appendChild(button)
+
+}
+
+// FILTRES - parenting
+const portfolio = document.querySelector('#portfolio')
+portfolio.appendChild(divFiltres)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -58,7 +107,6 @@ const travaux = await requeteTravaux.json()
 //GALLERY - Déclaration des éléments
 const gallery = document.createElement("div")
 gallery.classList.add('gallery')
-const portfolio = document.querySelector('#portfolio')
 portfolio.appendChild(gallery)
 
 //GALLERY - Fonction creation des travaux
