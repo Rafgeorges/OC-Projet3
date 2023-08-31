@@ -62,24 +62,31 @@ async function loginFunction(email, password){
         },
         body : JSON.stringify({email, password}),
     })
-    const retourPost = await requetePost.json
-    console.log(requetePost.status)
-    if(requetePost.status === 404){
+    const retourPost = await requetePost.json()
+    console.log(requetePost.status)// vérifier le status de la réponse dans le log
+    if(requetePost.status === 404){ //traiter chaque cas d'erreurs 
         alert('user not found')
-    }
-    
-    
+    }else if(requetePost.status === 401){
+        alert('password incorrect')}
+            else{console.log('login effectué')
+                 const token = retourPost.token
+                 console.log(token)}
 }
+    
+    
+    
+
 
 //LOGIN - Bouton submit
 const loginForm = document.querySelector('#form')
 // const email = baliseEmail.value
 // const password = balisePassword.value
-const email = 'ssophie.bluel@test.tld'
-const password = 'S0pdhie'
 
 loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    loginFunction(email, password)
+    let email = 'sophie.bluel@test.tld'
+    let password = 'S0phie'
+
+    loginFunction(email, password)// appel de la fonction pour se connecter
       })
