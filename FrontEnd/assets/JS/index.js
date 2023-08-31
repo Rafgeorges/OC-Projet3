@@ -86,16 +86,6 @@ const portfolio = document.querySelector('#portfolio')
 portfolio.appendChild(divFiltres)
 
 
-
-
-
-
-
-
-
-
-
-
 //GALLERY ////////////////////////////////////////////
 //GALLERY -  Appel de l'API
 const requeteTravaux = await fetch("http://localhost:5678/api/works")
@@ -133,5 +123,4 @@ function genererTravaux(travaux){
 genererTravaux(travaux)
 
 
-//GALLERY - Parenting
 

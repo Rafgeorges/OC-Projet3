@@ -7,7 +7,7 @@ const ul = document.createElement("ul")
 const liProjets = document.createElement("li")
 const lienProjet = document.createElement("a")
 lienProjet.innerText= "projets"
-lienProjet.href = ""
+lienProjet.href = "http://127.0.0.1:5500/FrontEnd/indexLoggedin.html"
 
 //MENU - contact
 const liContact = document.createElement("li")
@@ -15,11 +15,11 @@ const lienContact = document.createElement('a')
 lienContact.innerText = "contact"
 lienContact.href = ''
 
-//MENU - lien login
+//MENU - lien logout
 const liLogin = document.createElement("li")
 const lienLogin = document.createElement("a")
-lienLogin.href = "http://127.0.0.1:5500/FrontEnd/Login.html"
-lienLogin.innerText="login"
+lienLogin.href = "http://127.0.0.1:5500/FrontEnd/index.html"
+lienLogin.innerText="logout"
 
 //MENU - insta
 const liInsta = document.createElement("li")
@@ -77,11 +77,46 @@ for(let i=0; i < categories.length;i++){
     document.querySelector(".gallery").innerHTML = ''; //Reset du html
     genererTravaux(travauxFiltres)
     })
-
     divFiltres.appendChild(button)
-
 }
 
 // FILTRES - parenting
 const portfolio = document.querySelector('#portfolio')
 portfolio.appendChild(divFiltres)
+
+
+//GALLERY ////////////////////////////////////////////
+//GALLERY -  Appel de l'API
+const requeteTravaux = await fetch("http://localhost:5678/api/works")
+const travaux = await requeteTravaux.json()
+
+//GALLERY - Déclaration des éléments
+const gallery = document.createElement("div")
+gallery.classList.add('gallery')
+portfolio.appendChild(gallery)
+
+//GALLERY - Fonction creation des travaux
+function genererTravaux(travaux){
+    try{
+        for(let i=0; i<travaux.length; i++){
+                const figure = document.createElement("figure")
+                const imageTravaux = document.createElement("img")
+                const titresTravaux = document.createElement("figcaption")
+
+                imageTravaux.src = travaux[i].imageUrl
+                imageTravaux.setAttribute("alt",travaux[i].title)
+                titresTravaux.innerText = travaux[i].title
+                figure.setAttribute('id','travaux[i].id')
+
+                gallery.appendChild(figure)
+                figure.appendChild(imageTravaux)
+                figure.appendChild(titresTravaux)
+            }
+        }
+    catch(error){
+        console.log(error)
+    }
+}
+
+
+genererTravaux(travaux)
