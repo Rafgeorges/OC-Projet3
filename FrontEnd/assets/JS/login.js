@@ -78,7 +78,7 @@ async function loginFunction(email, password){
 
 
 //LOGIN - Bouton submit
-const loginForm = document.querySelector('#form')
+const loginForm = document.querySelector('#loginForm')
 // const email = baliseEmail.value
 // const password = balisePassword.value
 
