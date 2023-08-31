@@ -21,7 +21,7 @@ lienContact.href = ''
 //MENU - lien login
 const liLogin = document.createElement("li")
 const lienLogin = document.createElement("a")
-lienLogin.href = ""
+lienLogin.href = "http://127.0.0.1:5500/FrontEnd/Login.html"
 lienLogin.innerText="login"
 
 //MENU - insta
@@ -65,7 +65,7 @@ buttonTous.addEventListener("click", function(){ //Ajout event listener bouton T
     document.querySelector(".gallery").innerHTML = '';
     genererTravaux(travaux)
     })
-    
+
 // FILTRES - boucle de création des boutons pour chaque catégories après le "tous"
 for(let i=0; i < categories.length;i++){
     const button = document.createElement('button')
