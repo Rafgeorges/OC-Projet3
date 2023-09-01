@@ -141,22 +141,15 @@ li a img{
 /* MODALE */
 .folio-titre-container{
 	outline: 1px solid cyan;
-	display: flex;
-	justify-content: center;
-	align-items: center;	
-	margin-bottom: 3em;
 	
 }
-
-#mes-projets-titre{
-	outline: 1px solid slateblue;
-	position: absolute;}
-
 .js-modal{
 	outline: 1px solid blue;
-	margin-left: 400px;
-	height: 45px;
-	width: 75px;
+	height: 25px;
+	width: 150px;
+	position: absolute;
+	top:600px;
+	margin-left: 750px;
 }
 /* FILTRES */
 .filtres-container{
