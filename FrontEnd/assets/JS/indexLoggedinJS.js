@@ -96,6 +96,8 @@ const modaleWrapper = document.createElement('div')
 modaleWrapper.classList.add('modal-window')
 modaleWrapper.classList.add('js-modal-stoppropag')
 
+const titreModale = document.createElement('h3')
+titreModale.innerText='Galerie photo'
 const galerieModale = document.createElement('div')
 galerieModale.setAttribute('id','Galerie-Modale')
 
@@ -111,6 +113,7 @@ boutonFermerModale.innerText = 'fermer la modale'
 
 portfolio.appendChild(baliseModale)
 baliseModale.appendChild(modaleWrapper)
+modaleWrapper.appendChild(titreModale)
 modaleWrapper.appendChild(galerieModale)
 modaleWrapper.appendChild(barreGrise)
 modaleWrapper.appendChild(boutonFermerModale)

@@ -169,27 +169,29 @@ li a img{
 }
 
 .modal-window{
+	padding: 50px;
 	overflow: auto;
 	background-color: white;
 	width: 630px;
 	max-width: calc(100vw- 20px);
 	height: 731px;
 	max-height: calc(100vh-20px);
-	padding:100px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	gap:50px;
 
 }
-
+.modal-window h3{
+	font-size: 26px;
+}
 #Galerie-Modale{
 	outline: 1px solid black;
-	width:420px;
+	width:430px;
 	display: flex;
 	flex-wrap: wrap;
 	gap:9px;
 	justify-content: space-between;
-	margin-bottom: 50px;
 	}
 
 #Galerie-Modale img{
@@ -204,12 +206,12 @@ li a img{
 	font-size: 10px;
 	background-color: black;
 	padding: 3px;
-	position: ;
+	position:absolute ;
 }
 #barre-grise{
-	margin-top: 45px;
-	height: 1px;
+	height: 10px;
 	background-color:#B3B3B3;
+	width: 50px;
 }
 .modal-window[aria-hidden=true]{
 	animation: fadeOut .1s both;
