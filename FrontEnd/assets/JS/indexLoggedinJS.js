@@ -166,6 +166,7 @@ function genererTravauxModale(travaux){
     for(let i=0; i< travaux.length; i++){
         const figureModale = document.createElement("figure")
         figureModale.classList.add('figure-modale')
+        figureModale.setAttribute('id',travaux[i].id)
         const imageTravaux = document.createElement("img")
         imageTravaux.src = travaux[i].imageUrl
         imageTravaux.setAttribute("alt",travaux[i].title)
@@ -175,20 +176,53 @@ function genererTravauxModale(travaux){
             'icon-trash',
             'fa-solid',
             'fa-trash-can')
+
+        iconTrash.addEventListener('click',function(e){
+            e.preventDefault()
+            deleteTravail(travaux[i].id)
+          
+        })
         
         galerieModale.appendChild(figureModale)
         figureModale.appendChild(imageTravaux)
         figureModale.appendChild(iconTrash)        
         }
 }
-
-
 genererTravauxModale(travaux) //Appel de la fonction
 
 
 
 
+//MODALE - Fonction pour effacer un travail 
+async function deleteTravail(TravauxId){
+    const urlApiDelete = `http://localhost:5678/api/works/${TravauxId}`
 
+    const token = localStorage.getItem('Token') // Récupération du token
+    console.log('Demander d','effacer le projet avec le token suivant:',token)
+
+    if (!token){  //en cas d'absence de token
+        console.error('Pas de token')
+        return
+    }
+    const confirmation = window.confirm('Etes vous sûr de vouloir effacer le projet ?') // Demande de confirmation
+    if(confirmation){
+        const delResponse = await fetch(urlApiDelete, {
+            method: 'DELETE',
+            headers : {
+                Accept: 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+        })
+        if(!delResponse.ok){
+            console.log(delResponse.status)
+        }else{
+            console.log(`Suppression du travail${travaux[i].id}` )
+            //recharge la galerie modale
+            galerieModale.innerHTML= '' // effacer le HTML de la galerie
+            genererTravauxModale(travaux)
+        }
+    }
+}
 
 
 
