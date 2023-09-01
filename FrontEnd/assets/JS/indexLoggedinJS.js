@@ -1,3 +1,9 @@
+//Appel de l'API
+const requeteTravaux = await fetch("http://localhost:5678/api/works")
+const travaux = await requeteTravaux.json()
+
+
+
 //MENU //////////////////////////////////////////
 const header = document.querySelector('header')
 const nav = document.createElement("nav")
@@ -42,6 +48,11 @@ ul.appendChild(liInsta)
 liInsta.appendChild(lienInsta)
 lienInsta.appendChild(ImgInsta)
 
+
+
+
+
+
 //STORAGE - TEMP
 console.log(localStorage)
 
@@ -58,25 +69,125 @@ mesProjetsTitre.innerText='Mes Projets'
 
 //PORTFOLIO - Bouton ouverte modale
 const lienModale = document.createElement('a')
-lienModale.href="#Modale"
-lienModale.classList.add('js-modal')
+lienModale.href="#modal1"
+lienModale.classList.add('js-lien-modal')
 const iconLienModale = document.createElement('i')
 iconLienModale.classList.add('fa-regular','fa-pen-to-square', 'modifier-icon')
 
 //PORTFOLIO - Parenting
 portfolio.appendChild(folioTitreContainer)
-folioTitreContainer.appendChild(mesProjetsTitre)
+portfolio.appendChild(mesProjetsTitre)
 folioTitreContainer.appendChild(lienModale)
+lienModale.appendChild(iconLienModale)
 
 //MODALE ///////////////////////////////////////////////////////////////////
 //MODALE - Création des éléments - ASIDE
 const baliseModale = document.createElement('aside')
-baliseModale.setAttribute("id", "Modale")
-baliseModale.classList.add('modal')
+baliseModale.classList.add('modal-container')
+baliseModale.setAttribute('id','modal1')
 baliseModale.setAttribute('aria-hidden','true')
 baliseModale.setAttribute('role', 'dialog')
 baliseModale.setAttribute('aria-modal', 'false')
-baliseModale.setAttribute('style','display:none' )
+baliseModale.setAttribute('style','display:none' )// Masquer par défaut la modale
+
+
+//MODALE- Création des éléments - WRAPPER
+const modaleWrapper = document.createElement('div')
+modaleWrapper.classList.add('modal-window')
+modaleWrapper.classList.add('js-modal-stoppropag')
+
+const galerieModale = document.createElement('div')
+galerieModale.setAttribute('id','Galerie-Modale')
+
+const barreGrise = document.createElement('div')
+barreGrise.setAttribute('id','barre-grise')
+
+const boutonFermerModale = document.createElement('button')
+boutonFermerModale.classList.add('js-modal-close')
+boutonFermerModale.innerText = 'fermer la modale'
+
+
+
+
+portfolio.appendChild(baliseModale)
+baliseModale.appendChild(modaleWrapper)
+modaleWrapper.appendChild(galerieModale)
+modaleWrapper.appendChild(barreGrise)
+modaleWrapper.appendChild(boutonFermerModale)
+
+
+//MODALE- Ouverture de la modale
+let modal = null
+const openModal = function(e){ //Fonction pour ouvrir
+    e.preventDefault()
+    const target = document.querySelector(e.target.getAttribute('href'))
+    target.style.display = null
+    target.removeAttribute('aria-hidden')
+    target.setAttribute('aria-modal', 'true')
+    modal = target
+    modal.addEventListener('click', closeModal)
+    modal.querySelector('.js-modal-close').addEventListener('click', closeModal)
+    modal.querySelector('.js-modal-stoppropag').addEventListener('click', stopPropagation)
+}
+
+const closeModal = function(e){ // fonction pour fermer
+    if (modal === null)return
+    e.preventDefault()
+    modal.style.display = "none"
+    modal.setAttribute('aria-hidden', 'true')
+    modal.removeAttribute('aria-modal')
+    modal.removeEventListener('click', closeModal)
+    modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
+    modal.querySelector('.js-modal-stoppropag').removeEventListener('click', stopPropagation)
+
+    modal = null
+}
+
+const stopPropagation = function(e){ // empeche de fermer la modale avec un click dans le contenu
+    e.stopPropagation()
+}
+
+document.querySelectorAll('.js-lien-modal').forEach(a =>{ //Quand on clique sur le lien modal
+    a.addEventListener('click', openModal)
+})
+
+window.addEventListener('keydown', function(e){      //fermer la modale avec la touche escape
+    if(e.key === "Escape" || e.key === "Esc"){
+        closeModal(e)
+    }
+})
+
+//MODALE - FONCTION - fonction qui genere les travaux de la modale
+function genererTravauxModale(travaux){
+   
+    for(let i=0; i< travaux.length; i++){
+        const figureModale = document.createElement("figure")
+        figureModale.classList.add('figure-modale')
+        const imageTravaux = document.createElement("img")
+        imageTravaux.src = travaux[i].imageUrl
+        imageTravaux.setAttribute("alt",travaux[i].title)
+        
+        const iconTrash = document.createElement('div')
+        iconTrash.classList.add(
+            'icon-trash',
+            'fa-solid',
+            'fa-trash-can')
+        
+        galerieModale.appendChild(figureModale)
+        figureModale.appendChild(imageTravaux)
+        figureModale.appendChild(iconTrash)        
+        }
+}
+
+
+genererTravauxModale(travaux) //Appel de la fonction
+
+
+
+
+
+
+
 
 
 // FILTERS ////////////////////////////////////////////
@@ -143,9 +254,6 @@ portfolio.appendChild(divFiltres)
 
 
 //GALLERY ////////////////////////////////////////////
-//GALLERY -  Appel de l'API
-const requeteTravaux = await fetch("http://localhost:5678/api/works")
-const travaux = await requeteTravaux.json()
 
 //GALLERY - Déclaration des éléments
 const gallery = document.createElement("div")
