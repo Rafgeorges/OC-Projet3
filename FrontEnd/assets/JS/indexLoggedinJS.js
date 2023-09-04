@@ -82,59 +82,23 @@ lienModale.appendChild(iconLienModale)
 
 //MODALE ///////////////////////////////////////////////////////////////////
 //MODALE - Création des éléments - ASIDE
-const baliseModale = document.createElement('aside')
-baliseModale.classList.add('modal-container')
-baliseModale.setAttribute('id','modal1')
-baliseModale.setAttribute('aria-hidden','true')
-baliseModale.setAttribute('role', 'dialog')
-baliseModale.setAttribute('aria-modal', 'false')
+const baliseModale = document.querySelector('#modal1')
 baliseModale.setAttribute('style','display:none' )// Masquer par défaut la modale
 
 
 
-//MODALE- Création des éléments - WRAPPER1
-const modaleWrapper1 = document.createElement('div')
-modaleWrapper1.classList.add('modal-window')
-modaleWrapper1.classList.add('js-modal-stoppropag')
+//MODALE- Selection des éléments - WRAPPER1
 
-const titreModale = document.createElement('h3')
-titreModale.innerText='Galerie photo'
-const galerieModale = document.createElement('div')
-galerieModale.setAttribute('id','Galerie-Modale')
+const modaleWrapper1 = document.querySelector('#modaleWrapper1')
+const galerieModale = document.querySelector('#Galerie-Modale')
+const boutonFermerModale = document.querySelector('.js-modal-close')
+const ajouterTravauxBtn = document.querySelector('#btn-ajouter-travaux')
 
-const barreGrise = document.createElement('div')
-barreGrise.setAttribute('id','barre-grise')
-
-const boutonFermerModale = document.createElement('button')
-boutonFermerModale.classList.add('js-modal-close')
-boutonFermerModale.innerText = 'fermer la modale'
-
-const ajouterTravauxBtn = document.createElement('button')
-ajouterTravauxBtn.setAttribute('id','btn-ajouter-travaux')
-ajouterTravauxBtn.innerText= 'Ajouter une photo'
-
-
-
-portfolio.appendChild(baliseModale)
-baliseModale.appendChild(modaleWrapper1)
-modaleWrapper1.appendChild(boutonFermerModale)
-modaleWrapper1.appendChild(titreModale)
-modaleWrapper1.appendChild(galerieModale)
-modaleWrapper1.appendChild(barreGrise)
-modaleWrapper1.appendChild(ajouterTravauxBtn)
-
-//MODALE- Création des éléments - WRAPPER2
-const modaleWrapper2 = document.createElement('div')
-modaleWrapper2.classList.add('modal-window')
-modaleWrapper2.classList.add('js-modal-stoppropag')
+//MODALE- Selection des éléments - WRAPPER2
+const modaleWrapper2 = document.querySelector('#modaleWrapper2')
 modaleWrapper2.setAttribute('style','display:none' )// Masquer par défaut la modale2
 
-
-const titreModale2 = document.createElement('h3')
-titreModale2.innerText='Ajout photo'
-
-baliseModale.appendChild(modaleWrapper2)
-modaleWrapper2.appendChild(titreModale2)
+const ajoutForm = document.querySelector('#ajoutPhotoForm')
 
 //Bouton ajouter photo
 ajouterTravauxBtn.addEventListener('click',function(event){
