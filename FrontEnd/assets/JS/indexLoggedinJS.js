@@ -137,7 +137,7 @@ const closeModal = function(e){ // fonction pour fermer
     modal = null
 }
 
-const stopPropagation = function(e){ // empeche de fermer la modale avec un click dans le contenu
+const stopPropagation = function(e){ // Stop la propagation (empeche de fermer avec un click)
     e.stopPropagation()
 }
 
