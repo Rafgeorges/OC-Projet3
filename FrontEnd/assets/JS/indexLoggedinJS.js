@@ -89,20 +89,19 @@ baliseModale.setAttribute('style','display:none' )// Masquer par défaut la moda
 
 //MODALE- Selection des éléments - WRAPPER1
 
-const modaleWrapper1 = document.querySelector('#modaleWrapper1')
+const modaleWrapper1 = document.querySelector('.modal_page1')
 const galerieModale = document.querySelector('#Galerie-Modale')
 const boutonFermerModale = document.querySelector('.js-modal-close')
 const ajouterTravauxBtn = document.querySelector('#btn-ajouter-travaux')
 
 //MODALE- Selection des éléments - WRAPPER2
-const modaleWrapper2 = document.querySelector('#modaleWrapper2')
-modaleWrapper2.setAttribute('style','display:none' )// Masquer par défaut la modale2
+const modaleWrapper2 = document.querySelector('.modal_page2')
+modaleWrapper2.setAttribute('style','display:none' )// Masquer par défaut le wrapper2
 
 const ajoutForm = document.querySelector('#ajoutPhotoForm')
 
-//Bouton ajouter photo
-ajouterTravauxBtn.addEventListener('click',function(event){
-    event.preventDefault()
+//Bouton pour passer au wrapper2
+ajouterTravauxBtn.addEventListener('click',function(){
     modaleWrapper2.style.display = null
     modaleWrapper1.style.display = "none"
 })
@@ -116,8 +115,8 @@ const openModal = function(e){ //Fonction pour ouvrir
     e.preventDefault()
     const target = document.querySelector(e.target.getAttribute('href'))
     target.style.display = null
-    target.removeAttribute('aria-hidden')
-    target.setAttribute('aria-modal', 'true')
+    target.removeAttribute('aria-hidden') //Pour l'accessibilité
+    target.setAttribute('aria-modal', 'true')//Pour l'accessibilité
     modal = target
     modal.addEventListener('click', closeModal)
     modal.querySelector('.js-modal-close').addEventListener('click', closeModal)
@@ -128,8 +127,8 @@ const closeModal = function(e){ // fonction pour fermer
     if (modal === null)return
     e.preventDefault()
     modal.style.display = "none"
-    modal.setAttribute('aria-hidden', 'true')
-    modal.removeAttribute('aria-modal')
+    modal.setAttribute('aria-hidden', 'true')//Pour l'accessibilité
+    modal.removeAttribute('aria-modal')//Pour l'accessibilité
     modal.removeEventListener('click', closeModal)
     modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
     modal.querySelector('.js-modal-stoppropag').removeEventListener('click', stopPropagation)

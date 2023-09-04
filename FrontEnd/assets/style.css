@@ -153,7 +153,7 @@ li a img{
 	margin-left: 750px;
 }
 
-/* MODALE FENETRE */
+/* MODALE */
 .modal-container{
 	position: fixed;
 	top:0;
@@ -162,13 +162,25 @@ li a img{
 	height: 100%;
 	background: rgba(0,0,0,0.8);
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	animation: fadeIn .1s both;
 
 }
+.js-modal-close{
+	height:28px;
+	width: 28px;
+	/* border:none; */
+	background-color: transparent;
+	font-size: 22px;
+	text-align: center;
+	padding: 0px;
 
-.modal-window{
+
+}
+
+.wrapper{
 	padding: 50px;
 	overflow: auto;
 	background-color: white;
@@ -178,13 +190,26 @@ li a img{
 	max-height: calc(100vh-20px);
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	gap:50px;
 
 }
-.modal-window h3{
+
+.modal_header{
+	display: flex;
+	justify-content: right;
+}
+.modal_page1{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 50px;
+	outline: 1px solid red;
+}
+.modal_page1 h3{
 	font-size: 26px;
 }
+
+/* MODALE PAGE 1 GALERIE */
 #Galerie-Modale{
 	outline: 1px solid black;
 	width:430px;
@@ -198,8 +223,6 @@ li a img{
 	width:76.86px;
 }
 
-.figure-modale{
-}
 .icon-trash{
 	color: white;
 	font-size: 10px;
@@ -207,14 +230,15 @@ li a img{
 	padding: 3px;
 	position:absolute ;
 }
+/* MODALE PAGE 1 CONTENT */
 #barre-grise{
 	height: 1px;
 	background-color:#B3B3B3;
 	width: 100%;
 }
+
 .modal-window[aria-hidden=true]{
 	animation: fadeOut .1s both;
-
 }
 
 #btn-ajouter-travaux{
@@ -231,6 +255,7 @@ li a img{
 
 	padding: 9px 60px;
 }
+
 /* MODALE 2 */
 
 #modaleWrapper2{
@@ -262,6 +287,8 @@ li a img{
 	line-height: 16.42px;
 	padding: 0px 50px;
 	text-align: center;
+
+	cursor: pointer;
 }
 
 .Photo-container p{
