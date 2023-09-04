@@ -199,7 +199,6 @@ li a img{
 }
 
 .figure-modale{
-	outline: 1px solid salmon;
 }
 .icon-trash{
 	color: white;
@@ -209,9 +208,9 @@ li a img{
 	position:absolute ;
 }
 #barre-grise{
-	height: 10px;
+	height: 1px;
 	background-color:#B3B3B3;
-	width: 50px;
+	width: 100%;
 }
 .modal-window[aria-hidden=true]{
 	animation: fadeOut .1s both;

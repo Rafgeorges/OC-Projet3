@@ -91,10 +91,11 @@ baliseModale.setAttribute('aria-modal', 'false')
 baliseModale.setAttribute('style','display:none' )// Masquer par défaut la modale
 
 
-//MODALE- Création des éléments - WRAPPER
-const modaleWrapper = document.createElement('div')
-modaleWrapper.classList.add('modal-window')
-modaleWrapper.classList.add('js-modal-stoppropag')
+
+//MODALE- Création des éléments - WRAPPER1
+const modaleWrapper1 = document.createElement('div')
+modaleWrapper1.classList.add('modal-window')
+modaleWrapper1.classList.add('js-modal-stoppropag')
 
 const titreModale = document.createElement('h3')
 titreModale.innerText='Galerie photo'
@@ -115,15 +116,37 @@ ajouterTravauxBtn.innerText= 'Ajouter une photo'
 
 
 portfolio.appendChild(baliseModale)
-baliseModale.appendChild(modaleWrapper)
-modaleWrapper.appendChild(boutonFermerModale)
-modaleWrapper.appendChild(titreModale)
-modaleWrapper.appendChild(galerieModale)
-modaleWrapper.appendChild(barreGrise)
-modaleWrapper.appendChild(ajouterTravauxBtn)
+baliseModale.appendChild(modaleWrapper1)
+modaleWrapper1.appendChild(boutonFermerModale)
+modaleWrapper1.appendChild(titreModale)
+modaleWrapper1.appendChild(galerieModale)
+modaleWrapper1.appendChild(barreGrise)
+modaleWrapper1.appendChild(ajouterTravauxBtn)
+
+//MODALE- Création des éléments - WRAPPER2
+const modaleWrapper2 = document.createElement('div')
+modaleWrapper2.classList.add('modal-window')
+modaleWrapper2.classList.add('js-modal-stoppropag')
+modaleWrapper2.setAttribute('style','display:none' )// Masquer par défaut la modale2
 
 
-//MODALE- Ouverture de la modale
+const titreModale2 = document.createElement('h3')
+titreModale2.innerText='Ajout photo'
+
+baliseModale.appendChild(modaleWrapper2)
+modaleWrapper2.appendChild(titreModale2)
+
+//Bouton ajouter photo
+ajouterTravauxBtn.addEventListener('click',function(event){
+    event.preventDefault()
+    modaleWrapper2.style.display = null
+    modaleWrapper1.style.display = "none"
+})
+
+
+
+
+//MODALE- Fonction Ouverture de la modale
 let modal = null
 const openModal = function(e){ //Fonction pour ouvrir
     e.preventDefault()
