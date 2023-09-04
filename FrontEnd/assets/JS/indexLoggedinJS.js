@@ -108,15 +108,19 @@ const boutonFermerModale = document.createElement('button')
 boutonFermerModale.classList.add('js-modal-close')
 boutonFermerModale.innerText = 'fermer la modale'
 
+const ajouterTravauxBtn = document.createElement('button')
+ajouterTravauxBtn.setAttribute('id','btn-ajouter-travaux')
+ajouterTravauxBtn.innerText= 'Ajouter une photo'
 
 
 
 portfolio.appendChild(baliseModale)
 baliseModale.appendChild(modaleWrapper)
+modaleWrapper.appendChild(boutonFermerModale)
 modaleWrapper.appendChild(titreModale)
 modaleWrapper.appendChild(galerieModale)
 modaleWrapper.appendChild(barreGrise)
-modaleWrapper.appendChild(boutonFermerModale)
+modaleWrapper.appendChild(ajouterTravauxBtn)
 
 
 //MODALE- Ouverture de la modale
@@ -221,6 +225,8 @@ async function deleteTravail(TravauxId){
             galerieModale.innerHTML= '' // effacer le HTML de la galerie
             genererTravauxModale(travaux)
         }
+    }else{
+        console.log('suppression annulée')
     }
 }
 

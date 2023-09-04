@@ -149,7 +149,7 @@ li a img{
 	height: 25px;
 	width: 150px;
 	position: absolute;
-	top:600px;
+	top:605px;
 	margin-left: 750px;
 }
 
@@ -227,6 +227,22 @@ li a img{
 	from {opacity: 1;}
 	to{opacity: 0;}
 }
+
+#btn-ajouter-travaux{
+	font-family: 'Syne';
+	font-size: 16px;
+	line-height: 19.2px;
+	color: #ffffff;
+	font-weight: 700;
+	text-align: center;
+
+	border-radius: 60px;
+	border-style: none;
+	background-color: #1D6154;
+
+	padding: 9px 60px;
+}
+
 /* FILTRES */
 .filtres-container{
 	margin: auto;
