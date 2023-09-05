@@ -171,7 +171,7 @@ li a img{
 .js-modal-close{
 	height:28px;
 	width: 28px;
-	/* border:none; */
+	border:none;
 	background-color: transparent;
 	font-size: 22px;
 	text-align: center;
@@ -181,16 +181,13 @@ li a img{
 }
 
 .wrapper{
-	padding: 50px;
+	padding: 18px;
 	overflow: auto;
 	background-color: white;
-	width: 630px;
 	max-width: calc(100vw- 20px);
-	height: 731px;
 	max-height: calc(100vh-20px);
 	display: flex;
 	flex-direction: column;
-	gap:50px;
 
 }
 
@@ -203,7 +200,7 @@ li a img{
 	flex-direction: column;
 	align-items: center;
 	gap: 50px;
-	outline: 1px solid red;
+	padding: 50px;
 }
 .modal_page1 h3{
 	font-size: 26px;
@@ -211,7 +208,6 @@ li a img{
 
 /* MODALE PAGE 1 GALERIE */
 #Galerie-Modale{
-	outline: 1px solid black;
 	width:430px;
 	display: flex;
 	flex-wrap: wrap;
