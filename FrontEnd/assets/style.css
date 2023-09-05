@@ -193,7 +193,6 @@ li a img{
 
 .modal_header{
 	display: flex;
-	outline:#2fb89f 1px solid;
 	justify-content:flex-end;
 	;
 }
@@ -279,7 +278,6 @@ li a img{
 	align-items: center;
 	gap: 50px;
 	padding: 50px;
-	outline: #306685 1px solid;
 }
 
 .modal_page2 h3{
@@ -323,6 +321,12 @@ li a img{
 	color: #444444;
 }
 
+/* MODALE 2  - content */
+.PhotoForm{
+	outline: #1D6154 1px solid;
+	display: flex;
+	flex-direction: column;
+}
 
 
 #img-mountain{
