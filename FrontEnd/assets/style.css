@@ -193,8 +193,26 @@ li a img{
 
 .modal_header{
 	display: flex;
-	justify-content: right;
+	outline:#2fb89f 1px solid;
+	justify-content:flex-end;
+	;
 }
+#modal_page1_close_btn{
+	
+}
+#modal_page2_return_btn{
+	height:28px;
+	width: 28px;
+	border:none;
+	background-color: transparent;
+	font-size: 22px;
+	text-align: center;
+	padding: 0px;
+	margin-right: auto;
+
+}
+
+/*MODALE PAGE 1 - */
 .modal_page1{
 	display: flex;
 	flex-direction: column;
@@ -224,8 +242,8 @@ li a img{
 	background-color: black;
 	padding: 3px;
 	position:relative ;
-	left: 70px;
-	bottom: 84px;
+	left: 74px;
+	bottom: 88px;
 }
 /* MODALE PAGE 1 CONTENT */
 #barre-grise{
@@ -255,10 +273,19 @@ li a img{
 
 /* MODALE 2 */
 
-#modaleWrapper2{
+.modal_page2{
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	gap: 50px;
+	padding: 50px;
+	outline: #306685 1px solid;
 }
+
+.modal_page2 h3{
+	font-size: 26px;
+}
+
 .Photo-container{
 	background-color: #E8F1F6;
 	border-radius: 5px;

@@ -101,12 +101,21 @@ modaleWrapper2.setAttribute('style','display:none' )// Masquer par défaut le wr
 const ajoutForm = document.querySelector('#ajoutPhotoForm')
 
 //Bouton pour passer au wrapper2
+const retournerFleche = document.querySelector('#modal_page2_return_btn')
+retournerFleche.style.display = "none"
+
 ajouterTravauxBtn.addEventListener('click',function(){
     modaleWrapper2.style.display = null
     modaleWrapper1.style.display = "none"
+    retournerFleche.style.display = null
 })
 
-
+//Bouton pour retourner au wrapper1
+retournerFleche.addEventListener('click', function(){
+    modaleWrapper2.style.display = "none"
+    modaleWrapper1.style.display = null
+    retournerFleche.style.display = "none"
+})
 
 
 //MODALE- Fonction Ouverture de la modale
