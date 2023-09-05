@@ -173,9 +173,9 @@ function genererTravauxModale(travaux){
           
         })
         
-        galerieModale.appendChild(figureModale)
-        figureModale.appendChild(imageTravaux)
+        galerieModale.appendChild(figureModale)        
         figureModale.appendChild(iconTrash)        
+        figureModale.appendChild(imageTravaux)
         }
 }
 genererTravauxModale(travaux) //Appel de la fonction
