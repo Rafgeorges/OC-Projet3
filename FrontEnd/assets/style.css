@@ -208,15 +208,14 @@ li a img{
 
 /* MODALE PAGE 1 GALERIE */
 #Galerie-Modale{
-	width:430px;
 	display: flex;
 	flex-wrap: wrap;
-	gap:9px;
-	justify-content: space-between;
+	width: 510px;
+	gap:5px;
 	}
 
 #Galerie-Modale img{
-	width:76.86px;
+	width:80px;
 }
 
 .icon-trash{
