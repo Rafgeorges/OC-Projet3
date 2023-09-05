@@ -51,7 +51,7 @@
 					<form action="#" method="post" id="ajoutPhotoForm" >
 						<div class="Photo-container">
 							<i class="fa-regular fa-image" id="img-mountain"></i>
-							<label for="image_upload">+ Ajouter photo</label>
+							<label for="image_upload" >+ Ajouter photo</label>
 							<input type="file" id="image_upload" name="image" accept="image/*" text="">
 							<p>jpg, png : 4mo max</p>
 						</div>
@@ -59,11 +59,13 @@
 							<label for="title">Titre</label>
 							<input type="text" name="title" id="titre" >
 
-							<label for="selection">Catégorie</label>
-							<select name="categorie" id="categorie" >
-								<option value="1">Salut 1</option>
+							<label for="categorie_selection" id="labelcategorie">Catégorie</label>
+							<select name="categorie" id="categorie_selection" >
 							</select>
 						</div>
+						<div id="barre-grise"></div>
+
+						<input id="btn_envoyer" type="submit" value="Valider">
 					</form>
 				</div>
 			</div>
