@@ -190,6 +190,32 @@ function genererTravauxModale(travaux){
 genererTravauxModale(travaux) //Appel de la fonction
 
 
+//MODALE - AJOUTER UNE PHOTO - Fonction pour creer les categories selon l'API
+const requeteCategories = await fetch('http://localhost:5678/api/categories')
+const categories = await requeteCategories.json()
+
+const categorieSelection = document.querySelector('#categorie_selection')
+
+for(let i=0; i < categories.length;i++){
+    const categorieOption = document.createElement('option')
+    categorieOption.setAttribute('value',categories[i].id)
+    categorieOption.innerText= categories[i].name
+
+    categorieSelection.appendChild(categorieOption)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //MODALE - Fonction pour effacer un travail 
@@ -230,8 +256,6 @@ async function deleteTravail(TravauxId){
 
 // FILTERS ////////////////////////////////////////////
 // FILTERS - Appel de l'API
-const requeteCategories = await fetch('http://localhost:5678/api/categories')
-const categories = await requeteCategories.json()
 
 // FILTRES - création de la balise, et du bouton "tous"
 const divFiltres = document.createElement('div')
@@ -265,24 +289,6 @@ for(let i=0; i < categories.length;i++){
 
 // FILTRES - parenting
 portfolio.appendChild(divFiltres)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
