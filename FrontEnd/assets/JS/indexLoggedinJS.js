@@ -2,6 +2,7 @@
 const requeteTravaux = await fetch("http://localhost:5678/api/works")
 const travaux = await requeteTravaux.json()
 
+console.log(travaux)
 
 
 //MENU //////////////////////////////////////////
@@ -234,8 +235,8 @@ async function deleteTravail(TravauxId){
         const delResponse = await fetch(urlApiDelete, {
             method: 'DELETE',
             headers : {
-                Accept: 'application/json',
-                Authorization: `Bearer ${token}`
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
             },
         })
         if(!delResponse.ok){
@@ -250,6 +251,68 @@ async function deleteTravail(TravauxId){
         console.log('suppression annulée')
     }
 }
+
+//MODALE - Fonction pour envoyer un travail
+
+const ajoutPhotoForm = document.querySelector('#ajoutPhotoForm')
+
+
+async function posterUnTravail(){
+
+    const imageUpload = document.querySelector('#image_upload')
+    const workTitle = document.querySelector('#title')
+    const workCategory = document.querySelector("#category_selection")
+
+    const formData = new FormData(ajoutPhotoForm)
+    formData.append("image", imageUpload.files[0]);
+    formData.append("title", workTitle);
+    formData.append("category", workCategory);
+    console.log(formData)
+
+
+    const token = localStorage.getItem('Token') // Récupération du token
+    const response = await fetch('http://localhost:5678/api/works', {
+        method: 'POST',
+        headers:{
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: formData,
+    })
+    console.log(response.status)
+    if(response.status === 401){
+        console.error('Authentification échouée')
+    }else if (response.status ===500){
+        console.error('Unexpected Error')
+    }else if (response.status === 201){
+        console.log('travail soumis')
+    }
+
+
+
+}
+
+
+
+
+
+
+ajoutPhotoForm.addEventListener('submit', function(e){
+    e.preventDefault()
+    posterUnTravail()
+
+     //recharge les galeries
+     galerieModale.innerHTML= '' // effacer le HTML de la galerie
+     genererTravauxModale(travaux)
+
+     gallery.innerHTML= '' // effacer le HTML de la galerie
+     genererTravauxModale(travaux)
+
+})
+
+
+
+
 
 
 

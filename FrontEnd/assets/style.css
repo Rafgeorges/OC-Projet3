@@ -333,7 +333,7 @@ li a img{
 }
 
 /* MODALE 2  - content */
-.PhotoForm{
+/* .PhotoForm{
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -350,7 +350,7 @@ li a img{
 }
 .PhotoForm label{
 	color: #3D3D3D;
-}
+} */
 #labelcategorie{
 margin-top: 50px;
 }
