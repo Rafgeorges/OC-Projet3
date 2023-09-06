@@ -205,20 +205,6 @@ for(let i=0; i < categories.length;i++){
     categorieSelection.appendChild(categorieOption)
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //MODALE - Fonction pour effacer un travail 
 async function deleteTravail(TravauxId){
     const urlApiDelete = `http://localhost:5678/api/works/${TravauxId}`
@@ -252,23 +238,23 @@ async function deleteTravail(TravauxId){
     }
 }
 
-//MODALE - Fonction pour envoyer un travail
-
-const ajoutPhotoForm = document.querySelector('#ajoutPhotoForm')
 
 
-async function posterUnTravail(){
+//MODALE - AJOUT D'UN TRAVAIL -
 
-    const imageUpload = document.querySelector('#image_upload')
+
+const imageUpload = document.querySelector('#image_upload')
     const workTitle = document.querySelector('#title')
     const workCategory = document.querySelector("#category_selection")
 
+//MODALE - AJOUT D'UN TRAVAIL - Fonction pour envoyer un travail
+
+async function posterUnTravail(){
     const formData = new FormData(ajoutPhotoForm)
     formData.append("image", imageUpload.files[0]);
     formData.append("title", workTitle);
     formData.append("category", workCategory);
     console.log(formData)
-
 
     const token = localStorage.getItem('Token') // Récupération du token
     const response = await fetch('http://localhost:5678/api/works', {
@@ -287,16 +273,31 @@ async function posterUnTravail(){
     }else if (response.status === 201){
         console.log('travail soumis')
     }
-
-
-
 }
 
+//MODALE - AJOUT D'UN TRAVAIL - aperçu de l'image
+
+const ajoutPhotoForm = document.querySelector('#ajoutPhotoForm')
+const photoContainerEmpty = document.querySelector("#photo_container_empty")
+
+
+const imageApercu = document.createElement('img')
+imageApercu.style.display='none'
+photoContainerEmpty.appendChild(imageApercu)
 
 
 
 
+imageUpload.addEventListener('change',function(){ // Ajout de l'event
+    console.log('salut')
+    imageApercu.src = URL.createObjectURL(imageUpload.files[0])
+    imageApercu.style.display=null
+    console.log(imageUpload.files[0])
 
+
+})
+
+//MODALE - AJOUT D'UN TRAVAIL -  Evenemenement sur submit
 ajoutPhotoForm.addEventListener('submit', function(e){
     e.preventDefault()
     posterUnTravail()
