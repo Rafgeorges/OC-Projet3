@@ -278,10 +278,10 @@ async function posterUnTravail(){
 //MODALE - AJOUT D'UN TRAVAIL - aperçu de l'image
 
 const ajoutPhotoForm = document.querySelector('#ajoutPhotoForm')
-const photoContainerEmpty = document.querySelector("#photo_container_empty")
+const photoContainerEmpty = document.querySelector(".Photo-container")
 
 
-const imageApercu = document.createElement('img')
+const imageApercu = document.createElement('img')//Création de l'image aperçu
 imageApercu.style.display='none'
 photoContainerEmpty.appendChild(imageApercu)
 

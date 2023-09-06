@@ -333,9 +333,11 @@ li a img{
 
 
 
-#photo_container_empty img{
+.Photo-container img{
 	height: 250px;
 	width: 250px;
+	position: absolute;
+	object-fit: contain;
 }
 
 
