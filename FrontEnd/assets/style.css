@@ -142,26 +142,22 @@ li a img{
 /* MODALE */
 /* MODALE BOUTON */
 #titres_container{
-	outline: #3D3D3D 1px solid;
 	display: flex;
 	justify-content: center;
 	padding-top: 100px;
-	padding-bottom: 25px;
+	padding-bottom: 50px;
 }
 #titre_container_filler{
-	outline:blueviolet 1px solid ;
 	width: 124px;
 
 }
 #mes-projets-titre{
-	outline: #B1663C 1px solid;
 	text-align: center;
 }
 
 
 
 .js-lien-modal{
-	outline: 1px solid blue;
 	padding:10px ;
 	display: flex;
 	justify-content: center;

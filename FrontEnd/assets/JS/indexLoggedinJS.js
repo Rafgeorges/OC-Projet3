@@ -64,27 +64,23 @@ const portfolio = document.querySelector('#portfolio')
 
 
 
-//PORTFOLIO - Titre MES PROJETS 
+//PORTFOLIO - Titres et bouton modale
 const projetsTitreContainer = document.createElement('div')
 const titreContainerFiller = document.createElement('div')
 const mesProjetsTitre = document.createElement('h2')
+
+const lienModale = document.createElement('a')
 const iconLienModale = document.createElement('i')
+const lienModaleText = document.createElement('p')
 
 projetsTitreContainer.setAttribute('id', "titres_container")
-
 titreContainerFiller.setAttribute('id','titre_container_filler')
-
 mesProjetsTitre.setAttribute('id','mes-projets-titre')
 mesProjetsTitre.innerText='Mes Projets'
-
-//PORTFOLIO - Bouton ouverte modale
-const lienModale = document.createElement('a')
-lienModale.href="#modal1"
-lienModale.classList.add('js-lien-modal')
 iconLienModale.classList.add('fa-regular','fa-pen-to-square', 'modifier-icon')
-const lienModaleText = document.createElement('p')
 lienModaleText.innerText='modifier'
-
+lienModale.classList.add('js-lien-modal')
+lienModale.href="#modal1"
 
 portfolio.appendChild(projetsTitreContainer)
 projetsTitreContainer.appendChild(titreContainerFiller)
@@ -94,12 +90,10 @@ lienModale.appendChild(iconLienModale)
 lienModale.appendChild(lienModaleText)
 
 
-
 //MODALE ///////////////////////////////////////////////////////////////////
 //MODALE - Création des éléments - ASIDE
 const baliseModale = document.querySelector('#modal1')
 baliseModale.setAttribute('style','display:none' )// Masquer par défaut la modale
-
 
 
 //MODALE- Selection des éléments - WRAPPER1
@@ -326,55 +320,6 @@ ajoutPhotoForm.addEventListener('submit', function(e){
      genererTravauxModale(travaux)
 
 })
-
-
-
-
-
-
-
-
-// FILTERS ////////////////////////////////////////////
-// FILTERS - Appel de l'API
-
-// FILTRES - création de la balise, et du bouton "tous"
-const divFiltres = document.createElement('div')
-divFiltres.classList.add('filtres-container')
-
-const buttonTous = document.createElement('button')
-buttonTous.setAttribute('id','filtres-btn-tous')
-buttonTous.innerText='Tous'
-divFiltres.appendChild(buttonTous)
-
-buttonTous.addEventListener("click", function(){ //Ajout event listener bouton TOUS
-    document.querySelector(".gallery").innerHTML = '';
-    genererTravaux(travaux)
-    })
-
-// FILTRES - boucle de création des boutons pour chaque catégories après le "tous"
-for(let i=0; i < categories.length;i++){
-    const button = document.createElement('button')
-    button.setAttribute('id',categories[i].name)
-    button.innerText= categories[i].name
-
-    button.addEventListener("click", function(){ //Ajout d'un event listener
-        const travauxFiltres = travaux.filter(function(travaux){
-        return travaux.categoryId === categories[i].id
-        })
-    document.querySelector(".gallery").innerHTML = ''; //Reset du html
-    genererTravaux(travauxFiltres)
-    })
-    divFiltres.appendChild(button)
-}
-
-// FILTRES - parenting
-portfolio.appendChild(divFiltres)
-
-
-
-
-
-
 
 
 //GALLERY ////////////////////////////////////////////

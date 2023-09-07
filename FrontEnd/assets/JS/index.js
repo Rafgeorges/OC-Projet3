@@ -46,32 +46,18 @@ lienInsta.appendChild(ImgInsta)
 const portfolio = document.querySelector('#portfolio')
 
 const projetsTitreContainer = document.createElement('div')
-const titreContainerFiller = document.createElement('div')
 const mesProjetsTitre = document.createElement('h2')
-const iconLienModale = document.createElement('i')
 
 projetsTitreContainer.setAttribute('id', "titres_container")
 
-titreContainerFiller.setAttribute('id','titre_container_filler')
 
 mesProjetsTitre.setAttribute('id','mes-projets-titre')
 mesProjetsTitre.innerText='Mes Projets'
 
-//PORTFOLIO - Bouton ouverte modale
-const lienModale = document.createElement('a')
-lienModale.href="#modal1"
-lienModale.classList.add('js-lien-modal')
-iconLienModale.classList.add('fa-regular','fa-pen-to-square', 'modifier-icon')
-const lienModaleText = document.createElement('p')
-lienModaleText.innerText='modifier'
 
 
 portfolio.appendChild(projetsTitreContainer)
-projetsTitreContainer.appendChild(titreContainerFiller)
 projetsTitreContainer.appendChild(mesProjetsTitre)
-projetsTitreContainer.appendChild(lienModale)
-lienModale.appendChild(iconLienModale)
-lienModale.appendChild(lienModaleText)
 
 // FILTERS ////////////////////////////////////////////
 // FILTERS - Appel de l'API
