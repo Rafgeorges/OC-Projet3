@@ -60,11 +60,20 @@ console.log(localStorage)
 //PORTFOLIO  /////////////////////////////////////////////////////////////////
 const portfolio = document.querySelector('#portfolio')
 
-//PORTFOLIO - Creation des éléments, du titre MES projets et du bouton ouverture
-const folioTitreContainer = document.createElement('div')
-folioTitreContainer.classList.add('folio-titre-container')
+//PORTFOLIO - Creation des éléments, du titre Mes projets et du bouton ouverture
+
+
+
 //PORTFOLIO - Titre MES PROJETS 
+const projetsTitreContainer = document.createElement('div')
+const titreContainerFiller = document.createElement('div')
 const mesProjetsTitre = document.createElement('h2')
+const iconLienModale = document.createElement('i')
+
+projetsTitreContainer.setAttribute('id', "titres_container")
+
+titreContainerFiller.setAttribute('id','titre_container_filler')
+
 mesProjetsTitre.setAttribute('id','mes-projets-titre')
 mesProjetsTitre.innerText='Mes Projets'
 
@@ -72,14 +81,19 @@ mesProjetsTitre.innerText='Mes Projets'
 const lienModale = document.createElement('a')
 lienModale.href="#modal1"
 lienModale.classList.add('js-lien-modal')
-const iconLienModale = document.createElement('i')
 iconLienModale.classList.add('fa-regular','fa-pen-to-square', 'modifier-icon')
+const lienModaleText = document.createElement('p')
+lienModaleText.innerText='modifier'
 
-//PORTFOLIO - Parenting
-portfolio.appendChild(folioTitreContainer)
-portfolio.appendChild(mesProjetsTitre)
-folioTitreContainer.appendChild(lienModale)
+
+portfolio.appendChild(projetsTitreContainer)
+projetsTitreContainer.appendChild(titreContainerFiller)
+projetsTitreContainer.appendChild(mesProjetsTitre)
+projetsTitreContainer.appendChild(lienModale)
 lienModale.appendChild(iconLienModale)
+lienModale.appendChild(lienModaleText)
+
+
 
 //MODALE ///////////////////////////////////////////////////////////////////
 //MODALE - Création des éléments - ASIDE
@@ -278,12 +292,13 @@ async function posterUnTravail(){
 //MODALE - AJOUT D'UN TRAVAIL - aperçu de l'image
 
 const ajoutPhotoForm = document.querySelector('#ajoutPhotoForm')
-const photoContainerEmpty = document.querySelector(".Photo-container")
+const photoContainer = document.querySelector(".Photo-container")
+const photoContent = document.querySelector(".Photo-content")
 
 
 const imageApercu = document.createElement('img')//Création de l'image aperçu
 imageApercu.style.display='none'
-photoContainerEmpty.appendChild(imageApercu)
+photoContainer.appendChild(imageApercu)
 
 
 
@@ -292,6 +307,7 @@ imageUpload.addEventListener('change',function(){ // Ajout de l'event
     console.log('salut')
     imageApercu.src = URL.createObjectURL(imageUpload.files[0])
     imageApercu.style.display=null
+    photoContent.style.display='none'
     console.log(imageUpload.files[0])
 
 

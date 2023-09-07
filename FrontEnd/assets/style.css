@@ -138,19 +138,49 @@ li a img{
 	margin-bottom: 0.5em;
 }
 
+
 /* MODALE */
 /* MODALE BOUTON */
-.folio-titre-container{
-	
+#titres_container{
+	outline: #3D3D3D 1px solid;
+	display: flex;
+	justify-content: center;
+	padding-top: 100px;
+	padding-bottom: 25px;
 }
+#titre_container_filler{
+	outline:blueviolet 1px solid ;
+	width: 124px;
+
+}
+#mes-projets-titre{
+	outline: #B1663C 1px solid;
+	text-align: center;
+}
+
+
+
 .js-lien-modal{
 	outline: 1px solid blue;
-	height: 25px;
-	width: 150px;
-	position: absolute;
-	top:605px;
-	margin-left: 750px;
+	padding:10px ;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	text-decoration: none;
+	width: 104px;
 }
+
+.js-lien-modal i{
+	font-size: 15px;
+	color: black;
+}
+.js-lien-modal p{
+	font-size: 14px;
+	color: black;
+}
+
+
+
 
 /* MODALE */
 .modal-container{
@@ -293,6 +323,7 @@ li a img{
 
 
 }
+
 .Photo-container{
 	background-color: #E8F1F6;
 	border-radius: 5px;
@@ -302,6 +333,16 @@ li a img{
 	align-items: center;
 	gap:10px;
 	padding: 50px 0px;
+	width: 100%;
+	min-height: 190px;
+}
+
+.Photo-content{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap:10px;
 	width: 100%;
 }
 
@@ -456,11 +497,7 @@ margin-top: 50px;
 	background-color: #1D6154;
 	color: white;
 }
-#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
-	margin-top: 125px;
-}
+
 .gallery {
 	width: 100%;
 	display: grid;
