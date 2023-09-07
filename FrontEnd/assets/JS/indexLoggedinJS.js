@@ -252,40 +252,35 @@ async function deleteTravail(TravauxId){
 
 //MODALE - AJOUT D'UN TRAVAIL -
 
-
+const photoForm = document.querySelector('#ajoutPhotoForm')
 const imageUpload = document.querySelector('#image_upload')
-    const workTitle = document.querySelector('#title')
-    const workCategory = document.querySelector("#category_selection")
+const workTitle = document.querySelector('#title')
+const workCategory = document.querySelector("#category_selection")
 
 //MODALE - AJOUT D'UN TRAVAIL - Fonction pour envoyer un travail
 
-async function posterUnTravail(){
-    const formData = new FormData()
-    formData.append("image", imageUpload.files[0]);
-    formData.append("title", workTitle);
-    formData.append("category", workCategory);
-    console.log(formData)
+async function posterUnTravail(form){
+    
+    const token = localStorage.getItem('Token') // Récupération du token
+    const response = await fetch('http://localhost:5678/api/works', {
+        method: 'POST',
+        headers:{
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`,
+             },
+        body: form,
+    })
+    console.log(response.status)
 
-    // const token = localStorage.getItem('Token') // Récupération du token
-    // const response = await fetch('http://localhost:5678/api/works', {
-    //     method: 'POST',
-    //     headers:{
-    //         Accept: 'application/json',
-    //         Authorization: `Bearer ${token}`,
-    //          },
-    //     body: formData,
-    // })
-    // console.log(response.status)
-
-    // if(response.status === 401){
-    //     console.error('Authentification échouée')
-    // }else if (response.status ===500){
-    //     console.error('Unexpected Error')
-    // }else if (response.status === 201){
-    //     console.log('travail soumis')
-    // }else{
-    //     console.error('erreur inconnue')
-    // }
+    if(response.status === 401){
+        console.error('Authentification échouée')
+    }else if (response.status ===500){
+        console.error('Unexpected Error')
+    }else if (response.status === 201){
+        console.log('travail soumis')
+    }else{
+        console.error('erreur inconnue')
+    }
 }
 
 //MODALE - AJOUT D'UN TRAVAIL - aperçu de l'image
@@ -299,10 +294,10 @@ imageApercu.style.display='none'
 photoContainer.appendChild(imageApercu)
 
 imageUpload.addEventListener('change',function(){ // Ajout de l'event
-    console.log('salut')
     imageApercu.src = URL.createObjectURL(imageUpload.files[0])
     imageApercu.style.display=null
     photoContent.style.display='none'
+    console.log('image chargée :',imageUpload.files[0])
 
 
 })
@@ -317,8 +312,16 @@ imageUpload.addEventListener('change',function(){ // Ajout de l'event
 
 const testouille = document.querySelector('#testouille')
 
-testouille.addEventListener('click', function(){
-    posterUnTravail()
+testouille.addEventListener('click', function(event){
+    event.preventDefault()
+    const formData = new FormData(photoForm)
+
+    console.log('données du form :',formData)
+
+    posterUnTravail(formData)
+
+
+
 })
     //  recharge les galeries
     //  galerieModale.innerHTML= '' // effacer le HTML de la galerie
