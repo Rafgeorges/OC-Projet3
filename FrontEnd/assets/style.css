@@ -148,31 +148,38 @@ li a img{
 	padding-bottom: 50px;
 }
 #titre_container_filler{
-	width: 124px;
+	width: 104px;
 
 }
 #mes-projets-titre{
 	text-align: center;
+
 }
 
 
 
-.js-lien-modal{
-	padding:10px ;
+#js-lien-modal{
 	display: flex;
 	justify-content: center;
-	gap: 10px;
+	align-items: center;
 	text-decoration: none;
 	width: 104px;
+
 }
 
-.js-lien-modal i{
+#js-lien-modal i{
 	font-size: 15px;
 	color: black;
+	z-index: -1;
+
 }
-.js-lien-modal p{
+#js-lien-modal p{
 	font-size: 14px;
 	color: black;
+	z-index: -1;
+
+
+
 }
 
 
@@ -400,7 +407,7 @@ li a img{
 }
 
 #labelcategorie{
-margin-top: 50px;
+margin-top: 20px;
 }
 
 .PhotoForm input{

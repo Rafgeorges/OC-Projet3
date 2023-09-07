@@ -79,9 +79,9 @@ mesProjetsTitre.setAttribute('id','mes-projets-titre')
 mesProjetsTitre.innerText='Mes Projets'
 
 lienModale.href="#modal1"
-lienModale.classList.add('js-lien-modal')
+lienModale.setAttribute('id','js-lien-modal')
 
-iconLienModale.classList.add('fa-regular','fa-pen-to-square', 'modifier-icon')
+iconLienModale.classList.add('fa-regular','fa-pen-to-square', 'modifier-icon',)
 lienModaleText.innerText='modifier'
 
 portfolio.appendChild(projetsTitreContainer)
@@ -95,7 +95,7 @@ lienModale.appendChild(lienModaleText)
 //MODALE ///////////////////////////////////////////////////////////////////
 //MODALE - Création des éléments - ASIDE
 const baliseModale = document.querySelector('#modal1')
-// baliseModale.setAttribute('style','display:none' )// Masquer par défaut la modale
+baliseModale.setAttribute('style','display:none' )// Masquer par défaut la modale
 
 
 //MODALE- Selection des éléments - WRAPPER1
@@ -160,7 +160,7 @@ const stopPropagation = function(e){ // Stop la propagation (empeche de fermer a
     e.stopPropagation()
 }
 
-document.querySelectorAll('.js-lien-modal').forEach(a =>{ //Quand on clique sur le lien modal
+document.querySelectorAll('#js-lien-modal').forEach(a =>{ //Quand on clique sur le lien modal
     a.addEventListener('click', openModal)
 })
 
@@ -260,33 +260,35 @@ const imageUpload = document.querySelector('#image_upload')
 //MODALE - AJOUT D'UN TRAVAIL - Fonction pour envoyer un travail
 
 async function posterUnTravail(){
-    const formData = new FormData(ajoutPhotoForm)
+    const formData = new FormData()
     formData.append("image", imageUpload.files[0]);
     formData.append("title", workTitle);
     formData.append("category", workCategory);
     console.log(formData)
 
-    const token = localStorage.getItem('Token') // Récupération du token
-    const response = await fetch('http://localhost:5678/api/works', {
-        method: 'POST',
-        headers:{
-            Accept: 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-        body: formData,
-    })
-    console.log(response.status)
-    if(response.status === 401){
-        console.error('Authentification échouée')
-    }else if (response.status ===500){
-        console.error('Unexpected Error')
-    }else if (response.status === 201){
-        console.log('travail soumis')
-    }
+    // const token = localStorage.getItem('Token') // Récupération du token
+    // const response = await fetch('http://localhost:5678/api/works', {
+    //     method: 'POST',
+    //     headers:{
+    //         Accept: 'application/json',
+    //         Authorization: `Bearer ${token}`,
+    //          },
+    //     body: formData,
+    // })
+    // console.log(response.status)
+
+    // if(response.status === 401){
+    //     console.error('Authentification échouée')
+    // }else if (response.status ===500){
+    //     console.error('Unexpected Error')
+    // }else if (response.status === 201){
+    //     console.log('travail soumis')
+    // }else{
+    //     console.error('erreur inconnue')
+    // }
 }
 
 //MODALE - AJOUT D'UN TRAVAIL - aperçu de l'image
-
 const ajoutPhotoForm = document.querySelector('#ajoutPhotoForm')
 const photoContainer = document.querySelector(".Photo-container")
 const photoContent = document.querySelector(".Photo-content")
@@ -296,32 +298,55 @@ const imageApercu = document.createElement('img')//Création de l'image aperçu
 imageApercu.style.display='none'
 photoContainer.appendChild(imageApercu)
 
-
-
-
 imageUpload.addEventListener('change',function(){ // Ajout de l'event
     console.log('salut')
     imageApercu.src = URL.createObjectURL(imageUpload.files[0])
     imageApercu.style.display=null
     photoContent.style.display='none'
-    console.log(imageUpload.files[0])
 
 
 })
 
 //MODALE - AJOUT D'UN TRAVAIL -  Evenemenement sur submit
-ajoutPhotoForm.addEventListener('submit', function(e){
-    e.preventDefault()
+// ajoutPhotoForm.addEventListener('submit', function(e){
+//     e.preventDefault()
+//     posterUnTravail()
+
+
+
+
+const testouille = document.querySelector('#testouille')
+
+testouille.addEventListener('click', function(){
     posterUnTravail()
-
-     //recharge les galeries
-     galerieModale.innerHTML= '' // effacer le HTML de la galerie
-     genererTravauxModale(travaux)
-
-     gallery.innerHTML= '' // effacer le HTML de la galerie
-     genererTravauxModale(travaux)
-
 })
+    //  recharge les galeries
+    //  galerieModale.innerHTML= '' // effacer le HTML de la galerie
+    //  genererTravauxModale(travaux)
+
+    //  gallery.innerHTML= '' // effacer le HTML de la galerie
+    //  genererTravauxModale(travaux)
+
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //GALLERY ////////////////////////////////////////////
