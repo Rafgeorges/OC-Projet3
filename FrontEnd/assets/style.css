@@ -65,6 +65,9 @@ section {
 }
 main{
 	padding: 0px 50px;
+	display: flex;
+	flex-direction: column;
+	gap:100px;
 }
 h1{
 	display: flex;
@@ -129,8 +132,9 @@ p{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	/* padding : 0px 75px; */
+	margin-top: 150px;
 }
+
 #introduction figure {
 	flex: 1
 }
@@ -156,6 +160,7 @@ p{
 #portfolio{
 	display: flex;
 	flex-direction: column;
+
 }
 
 
@@ -168,7 +173,6 @@ p{
 #titres_container{
 	display: flex;
 	justify-content: center;
-	padding-top: 100px;
 	padding-bottom: 50px;
 }
 #titre_container_filler{
@@ -538,6 +542,7 @@ margin-top: 20px;
 .contact {
 	width: 50%;
 margin: auto;
+
 }
 .contact > * {
 	text-align: center;
