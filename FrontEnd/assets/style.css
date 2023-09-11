@@ -47,6 +47,7 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -59,9 +60,12 @@ header {
 	margin: 50px 0
 }
 section {
-	margin: 50px 0
+	margin: 5
+	0px 0
 }
-
+main{
+	padding: 0px 50px;
+}
 h1{
 	display: flex;
 	flex-direction: column;
@@ -113,10 +117,19 @@ li a img{
 	height: 22px;
 }
 
+p{
+	font-weight: 400;
+	line-height: 16.42px;
+	color: #3D3D3D;
+	font-size: 14px;
+}
+
 /* MAIN */
 #introduction {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
+	/* padding : 0px 75px; */
 }
 #introduction figure {
 	flex: 1
@@ -124,11 +137,13 @@ li a img{
 #introduction img {
 	display: block;
 	margin: auto;
-	width: 80%;
+	width: 100%;
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
+	padding: 0px 100px;
+
 }
 #introduction h2 {
 	margin-bottom: 1em;
@@ -137,6 +152,15 @@ li a img{
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
+#portfolio{
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+
 
 
 /* MODALE */
@@ -448,17 +472,6 @@ margin-top: 20px;
 	background-color: #2b8d7b;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 @keyframes fadeIn {
 	from {opacity: 0;}
 	to{opacity: 1;}
@@ -501,6 +514,8 @@ margin-top: 20px;
 	color: white;
 }
 
+/* GALERIE */
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -511,6 +526,11 @@ margin-top: 20px;
 
 .gallery img {
 	width: 100%;
+
+
+
+
+
 
 
 	/* CONTACT */

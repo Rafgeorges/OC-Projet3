@@ -270,6 +270,7 @@ async function posterUnTravail(form){
              },
         body: form,
     })
+    
     console.log(response.status)
 
     if(response.status === 401){
@@ -281,6 +282,7 @@ async function posterUnTravail(form){
     }else{
         console.error('erreur inconnue')
     }
+    return false
 }
 
 //MODALE - AJOUT D'UN TRAVAIL - aperçu de l'image
@@ -320,15 +322,15 @@ testouille.addEventListener('click', function(event){
 
     posterUnTravail(formData)
 
+    // recharge les galeries
+        galerieModale.innerHTML= '' // effacer le HTML de la galerie
+        genererTravauxModale(travaux)
 
+        gallery.innerHTML= '' // effacer le HTML de la galerie
+        genererTravauxModale(travaux)
 
 })
-    //  recharge les galeries
-    //  galerieModale.innerHTML= '' // effacer le HTML de la galerie
-    //  genererTravauxModale(travaux)
-
-    //  gallery.innerHTML= '' // effacer le HTML de la galerie
-    //  genererTravauxModale(travaux)
+     
 
 // })
 
