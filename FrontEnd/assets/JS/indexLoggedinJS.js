@@ -238,7 +238,7 @@ async function deleteTravail(TravauxId){
         if(!delResponse.ok){
             console.log(delResponse.status)
         }else{
-            console.log(`Suppression du travail${travaux[i].id}` )
+            console.log(`Suppression du travail${travaux[i].title}` )
             //recharge la galerie modale
             galerieModale.innerHTML= '' // effacer le HTML de la galerie
             genererTravauxModale(travaux)
@@ -305,16 +305,9 @@ imageUpload.addEventListener('change',function(){ // Ajout de l'event
 })
 
 //MODALE - AJOUT D'UN TRAVAIL -  Evenemenement sur submit
-// ajoutPhotoForm.addEventListener('submit', function(e){
-//     e.preventDefault()
-//     posterUnTravail()
+const addPictureSubmit = document.querySelector('#btn_envoyer')
 
-
-
-
-const testouille = document.querySelector('#testouille')
-
-testouille.addEventListener('click', function(event){
+addPictureSubmit.addEventListener('click', function(event){
     event.preventDefault()
     const formData = new FormData(photoForm)
 

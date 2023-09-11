@@ -291,6 +291,8 @@ p{
 
 #Galerie-Modale img{
 	width:80px;
+	height: 106px;
+	object-fit: cover;
 }
 
 .icon-trash{
