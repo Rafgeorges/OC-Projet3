@@ -96,10 +96,3 @@ loginForm.addEventListener("submit", (event) => {
     loginFunction(email, password)// appel de la fonction pour se connecter
       })
 
-//LOGIN TEMP - Vider storage
-const viderStorage = document.querySelector('#vider-storage-btn')
-viderStorage.addEventListener('click',(event)=>{
-    localStorage.clear()
-    console.log('locale storage vidé')
-
-})

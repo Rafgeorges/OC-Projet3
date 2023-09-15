@@ -171,7 +171,7 @@ window.addEventListener('keydown', function(e){      //fermer la modale avec la 
 })
 
 //MODALE - FONCTION - fonction qui genere les travaux de la modale
-function genererTravauxModale(travaux){
+async function genererTravauxModale(travaux){
    
     for(let i=0; i< travaux.length; i++){
         const figureModale = document.createElement("figure")
@@ -220,7 +220,7 @@ async function deleteTravail(TravauxId){
     const urlApiDelete = `http://localhost:5678/api/works/${TravauxId}`
 
     const token = localStorage.getItem('Token') // Récupération du token
-    console.log('Demander d','effacer le projet avec le token suivant:',token)
+    console.log('Demander d','effacer le projet suivant:',TravauxId)
 
     if (!token){  //en cas d'absence de token
         console.error('Pas de token')
@@ -231,22 +231,27 @@ async function deleteTravail(TravauxId){
         const delResponse = await fetch(urlApiDelete, {
             method: 'DELETE',
             headers : {
-            Accept: 'application/json',
-            Authorization: `Bearer ${token}`
-            },
+                Accept: 'application/json',
+                Authorization: `Bearer ${token}`},
         })
         if(!delResponse.ok){
             console.log(delResponse.status)
         }else{
-            console.log(`Suppression du travail${travaux[i].title}` )
-            //recharge la galerie modale
-            galerieModale.innerHTML= '' // effacer le HTML de la galerie
+            console.log(`Suppression du travail ${TravauxId}` )
+            
+            const galerieModale = document.querySelector('#Galerie-Modale')//recharge la galerie modale
+            galerieModale.innerHTML= '' 
             genererTravauxModale(travaux)
-        }
-    }else{
-        console.log('suppression annulée')
+
+
+        }     
     }
-}
+    else{
+        console.log('suppression annulée')
+        }
+    
+    }
+
 
 
 
@@ -257,8 +262,8 @@ const imageUpload = document.querySelector('#image_upload')
 const workTitle = document.querySelector('#title')
 const workCategory = document.querySelector("#category_selection")
 
-//MODALE - AJOUT D'UN TRAVAIL - Fonction pour envoyer un travail
 
+//MODALE - AJOUT D'UN TRAVAIL - Fonction pour envoyer un travail
 async function posterUnTravail(form){
     
     const token = localStorage.getItem('Token') // Récupération du token
@@ -279,6 +284,9 @@ async function posterUnTravail(form){
         console.error('Unexpected Error')
     }else if (response.status === 201){
         console.log('travail soumis')
+        document.querySelector('.gallery').innerHTML= '' // reloading gallery
+        genererTravaux(travaux)
+
     }else{
         console.error('erreur inconnue')
     }
@@ -315,37 +323,12 @@ addPictureSubmit.addEventListener('click', function(event){
 
     posterUnTravail(formData)
 
-    // recharge les galeries
-        galerieModale.innerHTML= '' // effacer le HTML de la galerie
-        genererTravauxModale(travaux)
+  
+    closeModal(event)// Closing the modal
 
-        gallery.innerHTML= '' // effacer le HTML de la galerie
-        genererTravauxModale(travaux)
 
 })
      
-
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //GALLERY ////////////////////////////////////////////
 
