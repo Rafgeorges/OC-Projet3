@@ -3,25 +3,25 @@ const header = document.querySelector('header')
 const nav = document.createElement("nav")
 const ul = document.createElement("ul")
 
-//MENU - projets
+//MENU - button projets
 const liProjets = document.createElement("li")
 const lienProjet = document.createElement("a")
 lienProjet.innerText= "projets"
 lienProjet.href = "http://127.0.0.1:5500/FrontEnd/index.html"
 
-//MENU - contact
+//MENU - button contact
 const liContact = document.createElement("li")
 const lienContact = document.createElement('a')
 lienContact.innerText = "contact"
 lienContact.href = ''
 
-//MENU - lien login
+//MENU - button login
 const liLogin = document.createElement("li")
 const lienLogin = document.createElement("a")
 lienLogin.href = "http://127.0.0.1:5500/FrontEnd/Login.html"
 lienLogin.innerText="login"
 
-//MENU - insta
+//MENU - button insta
 const liInsta = document.createElement("li")
 const lienInsta = document.createElement("a")
 lienInsta.href=''
@@ -42,19 +42,16 @@ ul.appendChild(liInsta)
 liInsta.appendChild(lienInsta)
 lienInsta.appendChild(ImgInsta)
 
-//PORTFOLIO - Titre MES PROJETS 
+//PORTFOLIO///////////////////////////////////////////////
+//PORTFOLIO - Titre
 const portfolio = document.querySelector('#portfolio')
 
 const projetsTitreContainer = document.createElement('div')
-const mesProjetsTitre = document.createElement('h2')
-
 projetsTitreContainer.setAttribute('id', "titres_container")
 
-
+const mesProjetsTitre = document.createElement('h2')
 mesProjetsTitre.setAttribute('id','mes-projets-titre')
 mesProjetsTitre.innerText='Mes Projets'
-
-
 
 portfolio.appendChild(projetsTitreContainer)
 projetsTitreContainer.appendChild(mesProjetsTitre)
@@ -64,7 +61,7 @@ projetsTitreContainer.appendChild(mesProjetsTitre)
 const requeteCategories = await fetch('http://localhost:5678/api/categories')
 const categories = await requeteCategories.json()
 
-// FILTRES - création de la balise, et du bouton "tous"
+// FILTRES - container and button "tous"
 const divFiltres = document.createElement('div')
 divFiltres.classList.add('filtres-container')
 
@@ -73,27 +70,26 @@ buttonTous.setAttribute('id','filtres-btn-tous')
 buttonTous.innerText='Tous'
 divFiltres.appendChild(buttonTous)
 
-buttonTous.addEventListener("click", function(){ //Ajout event listener bouton TOUS
+buttonTous.addEventListener("click", function(){     //Event listener button TOUS
     document.querySelector(".gallery").innerHTML = '';
     genererTravaux(travaux)
     })
 
-// FILTRES - boucle de création des boutons pour chaque catégories après le "tous"
+// FILTRES - Loop for each categories
 for(let i=0; i < categories.length;i++){
     const button = document.createElement('button')
     button.setAttribute('id',categories[i].name)
     button.innerText= categories[i].name
 
-    button.addEventListener("click", function(){ //Ajout d'un event listener
+    button.addEventListener("click", function(){        //Event listener
         const travauxFiltres = travaux.filter(function(travaux){
         return travaux.categoryId === categories[i].id
         })
-    document.querySelector(".gallery").innerHTML = ''; //Reset du html
+    document.querySelector(".gallery").innerHTML = '';     //Html reset
     genererTravaux(travauxFiltres)
     })
 
     divFiltres.appendChild(button)
-
 }
 
 // FILTRES - parenting
@@ -101,16 +97,16 @@ portfolio.appendChild(divFiltres)
 
 
 //GALLERY ////////////////////////////////////////////
-//GALLERY -  Appel de l'API
+//GALLERY -  API call
 const requeteTravaux = await fetch("http://localhost:5678/api/works")
 const travaux = await requeteTravaux.json()
 
-//GALLERY - Déclaration des éléments
+//GALLERY - DOM creation
 const gallery = document.createElement("div")
 gallery.classList.add('gallery')
 portfolio.appendChild(gallery)
 
-//GALLERY - Fonction creation des travaux
+//GALLERY - function to create the projects
 function genererTravaux(travaux){
     try{
         for(let i=0; i<travaux.length; i++){
