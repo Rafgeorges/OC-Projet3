@@ -1,8 +1,6 @@
-//Appel de l'API
+//API Call
 const requeteTravaux = await fetch("http://localhost:5678/api/works")
 const travaux = await requeteTravaux.json()
-
-console.log(travaux)
 
 
 //MENU //////////////////////////////////////////
@@ -50,12 +48,6 @@ liInsta.appendChild(lienInsta)
 lienInsta.appendChild(ImgInsta)
 
 
-
-
-
-
-//STORAGE - TEMP
-console.log(localStorage)
 
 //PORTFOLIO  /////////////////////////////////////////////////////////////////
 const portfolio = document.querySelector('#portfolio')

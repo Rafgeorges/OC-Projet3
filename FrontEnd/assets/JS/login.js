@@ -52,7 +52,7 @@ lienInsta.appendChild(ImgInsta)
 const baliseEmail = document.querySelector("#email")
 const balisePassword = document.querySelector('#userPassword')
 
-//LOGIN - Fonction pour se connecter
+//LOGIN - Login function
 async function loginFunction(email, password){
     const requetePost = await fetch(urlApiLogin, {
         method: 'POST',
@@ -63,8 +63,8 @@ async function loginFunction(email, password){
         body : JSON.stringify({email, password}),
     })
     const retourPost = await requetePost.json()
-    console.log(requetePost.status)// vérifier le status de la réponse dans le log
-    if(requetePost.status === 404){ //traiter chaque cas d'erreurs 
+    console.log(requetePost.status)// Status check
+    if(requetePost.status === 404){ 
         alert('user not found')
     }else if(requetePost.status === 401){
         alert('password incorrect')}
@@ -74,13 +74,8 @@ async function loginFunction(email, password){
                  localStorage.setItem('Token',retourPost.token)
                  console.log('Token stored in local storage')
                  window.location.href = 'http://127.0.0.1:5500/FrontEnd/indexLoggedin.html' // Redirection
-                }
-                 
+                }              
 }
-    
-    
-    
-
 
 //LOGIN - Bouton submit
 const loginForm = document.querySelector('#loginForm')
@@ -92,6 +87,7 @@ loginForm.addEventListener("submit", (event) => {
 
     let email = 'sophie.bluel@test.tld'
     let password = 'S0phie'
+
 
     loginFunction(email, password)// appel de la fonction pour se connecter
       })

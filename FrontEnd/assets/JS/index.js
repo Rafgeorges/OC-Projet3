@@ -43,7 +43,7 @@ liInsta.appendChild(lienInsta)
 lienInsta.appendChild(ImgInsta)
 
 //PORTFOLIO///////////////////////////////////////////////
-//PORTFOLIO - Titre
+//PORTFOLIO - Title
 const portfolio = document.querySelector('#portfolio')
 
 const projetsTitreContainer = document.createElement('div')
@@ -57,9 +57,10 @@ portfolio.appendChild(projetsTitreContainer)
 projetsTitreContainer.appendChild(mesProjetsTitre)
 
 // FILTERS ////////////////////////////////////////////
-// FILTERS - Appel de l'API
+// FILTERS - API call
 const requeteCategories = await fetch('http://localhost:5678/api/categories')
 const categories = await requeteCategories.json()
+
 
 // FILTRES - container and button "tous"
 const divFiltres = document.createElement('div')
@@ -70,23 +71,23 @@ buttonTous.setAttribute('id','filtres-btn-tous')
 buttonTous.innerText='Tous'
 divFiltres.appendChild(buttonTous)
 
-buttonTous.addEventListener("click", function(){     //Event listener button TOUS
+buttonTous.addEventListener("click", function(){     //Event listener button "tous"
     document.querySelector(".gallery").innerHTML = '';
-    genererTravaux(travaux)
+    genererTravaux(travaux) // Galery dynamic update
     })
 
-// FILTRES - Loop for each categories
-for(let i=0; i < categories.length;i++){
+// FILTRES - button creation with a loop for each categories
+for( let i=0; i < categories.length;i++){
     const button = document.createElement('button')
     button.setAttribute('id',categories[i].name)
     button.innerText= categories[i].name
 
-    button.addEventListener("click", function(){        //Event listener
-        const travauxFiltres = travaux.filter(function(travaux){
+    button.addEventListener("click", function(){  //Event listener
+        const travauxFiltres = travaux.filter(function(travaux){ //Function sorting the projects
         return travaux.categoryId === categories[i].id
         })
-    document.querySelector(".gallery").innerHTML = '';     //Html reset
-    genererTravaux(travauxFiltres)
+    document.querySelector(".gallery").innerHTML = '';
+    genererTravaux(travauxFiltres)// Galery dynamic update
     })
 
     divFiltres.appendChild(button)
