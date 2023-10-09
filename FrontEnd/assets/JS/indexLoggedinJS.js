@@ -311,12 +311,14 @@ addPictureSubmit.addEventListener('click', function(event){
     event.preventDefault()
     const formData = new FormData(photoForm)
 
-    console.log('données du form :',formData)
+let baliseTitre = document.querySelector('#titre')
+if(!baliseTitre.value){
+   alert('Vous devez spécifier un titre')
+}else{
+posterUnTravail(formData)
+closeModal(event)// Closing the modal
+}
 
-    posterUnTravail(formData)
-
-  
-    closeModal(event)// Closing the modal
 
 
 })
