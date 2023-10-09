@@ -311,6 +311,11 @@ addPictureSubmit.addEventListener('click', function(event){
     event.preventDefault()
     const formData = new FormData(photoForm)
 
+let balisePhoto = document.querySelector('#image_upload')
+
+if(balisePhoto.files.length==0){
+    alert('Merci de selectionner un fichier a ajouter')
+}else{
 let baliseTitre = document.querySelector('#titre')
 if(!baliseTitre.value){
    alert('Vous devez spécifier un titre')
@@ -318,6 +323,10 @@ if(!baliseTitre.value){
 posterUnTravail(formData)
 closeModal(event)// Closing the modal
 }
+
+}
+
+
 
 
 
