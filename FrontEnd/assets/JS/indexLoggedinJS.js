@@ -312,14 +312,15 @@ addPictureSubmit.addEventListener('click', function(event){
     const formData = new FormData(photoForm)
 
 let balisePhoto = document.querySelector('#image_upload')
+let baliseTitre = document.querySelector('#titre')
 
 if(balisePhoto.files.length==0){
     alert('Merci de selectionner un fichier a ajouter')
 }else{
-let baliseTitre = document.querySelector('#titre')
-if(!baliseTitre.value){
-   alert('Vous devez spécifier un titre')
+    if(!baliseTitre.value){
+    alert('Vous devez spécifier un titre')
 }else{
+    
 posterUnTravail(formData)
 closeModal(event)// Closing the modal
 }
